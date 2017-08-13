@@ -1,3 +1,8 @@
+# Created By jack_1806
+
+# 13 Aug 2017
+
+
 from cv2 import *
 import numpy as np
 
@@ -24,4 +29,3 @@ r = add(p,q)
 write("answer.jpg",r)
 smooth(r)
 sharp(r)
-
