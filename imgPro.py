@@ -27,5 +27,9 @@ q = imread("second.jpg",0)
 q = resize(q,(800,500))
 r = add(p,q)
 write("answer.jpg",r)
+for i in r:
+	for j in i:
+		j+=255
+write("dbt.jpg",r)
 smooth(r)
 sharp(r)
