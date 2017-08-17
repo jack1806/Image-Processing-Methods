@@ -21,15 +21,15 @@ def smooth(image):
 	dst = filter2D(image,-1,fltr)
 	write("Smooth.jpg",dst)
 
-p = imread("first.jpg",0)
+p = imread("first.jpg")
 p = resize(p,(800,500))
-q = imread("second.jpg",0)
+q = imread("second.jpg")
 q = resize(q,(800,500))
 r = add(p,q)
 write("answer.jpg",r)
 for i in r:
 	for j in i:
-		j+=255
+		j=abs(j-255)
 write("dbt.jpg",r)
 smooth(r)
 sharp(r)
