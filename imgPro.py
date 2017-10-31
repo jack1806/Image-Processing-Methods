@@ -1,8 +1,3 @@
-# Created By jack_1806
-
-# 13 Aug 2017
-
-
 from cv2 import *
 import numpy as np
 
@@ -25,11 +20,15 @@ p = imread("first.jpg")
 p = resize(p,(800,500))
 q = imread("second.jpg")
 q = resize(q,(800,500))
+s = imread("third.jpg")
+s = resize(s,(800,500))
 r = add(p,q)
+r2 = add(r,s)
+write("tmp.jpg",r2)
 write("answer.jpg",r)
 for i in r:
 	for j in i:
-		j=abs(j-255)
+		j+=255
 write("dbt.jpg",r)
 smooth(r)
 sharp(r)
