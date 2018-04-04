@@ -15,9 +15,9 @@ if args["image"] is None:
 else:
     loc = args["image"]
 
-image = cv2.imread(loc)
-output = image.copy()
-gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+im = cv2.imread(loc)
+output = im.copy()
+gray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
 
 ret, thresh = cv2.threshold(gray, 205, 255, cv2.THRESH_BINARY)
 
@@ -25,11 +25,11 @@ cv2.imwrite(loc.split(".")[0]+"_threshold.jpg", thresh)
 print("Threshold image written in file system")
 
 print("Getting circles from Threshold image.")
-circles = cv2.HoughCircles(thresh, cv2.HOUGH_GRADIENT, 1.2, 100)
+circles = cv2.HoughCircles(thresh, cv2.HOUGH_GRADIENT, 1.2, 15)
 
 if circles is None:
     print("No Circles were found hence trying with the gray scale.")
-    circles = cv2.HoughCircles(gray, cv2.HOUGH_GRADIENT, 1.2, 100)
+    circles = cv2.HoughCircles(gray, cv2.HOUGH_GRADIENT, 1.2, 15)
 
 if circles is not None:
     circles = np.round(circles[0, :]).astype("int")
